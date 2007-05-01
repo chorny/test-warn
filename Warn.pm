@@ -47,7 +47,7 @@ is C<warnings_are {foo()} [], "no warnings in">.
 
 If you want to test for a warning given by carp,
 You have to write something like:
-C<warning_is {carp "msg"} {carped => 'msg'}, "Test for a carped warning">.
+C<warning_is {carp "msg"} {carped =E<gt> 'msg'}, "Test for a carped warning">.
 The test will fail,
 if a "normal" warning is found instead of a "carped" one.
 
@@ -207,7 +207,7 @@ who have given me a lot of ideas.
 
 =head1 AUTHOR
 
-Janek Schleicher, E<lt>bigj@kamelfreund.deE<gt>
+Janek Schleicher, E<lt>bigj AT kamelfreund.deE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
@@ -228,7 +228,7 @@ use warnings;
 use Array::Compare;
 use Sub::Uplevel;
 
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 require Exporter;
 

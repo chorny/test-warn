@@ -1,9 +1,13 @@
 Revision history for Perl extension Test::Warn.
+0.10  May 01 2007
+        - depend on newer version of Sub::Uplevel
+        - fixed pod error
 
 0.09  Mar 15 2007
         - new maintainer: Alexandr Ciornii
         - license in Makefile.PL
         - fixed carped.t (patch by PSINNOTT)
+        - pod.t
 
 0.08  Tue Sep 02 2003
         - fixed bug in warning_is, warnings_are when newlines are inside

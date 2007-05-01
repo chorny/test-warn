@@ -11,7 +11,7 @@ WriteMakefile(
                             'Test::Exception'       => 0,
                             'Test::Builder'         => 0.13,
                             'Test::Builder::Tester' => 1.02,
-                            'Sub::Uplevel'          => 0,
+                            'Sub::Uplevel'          => 0.12,
                             'Tree::DAG_Node'        => 0,
                             'File::Spec'            => 0,
                             'Test::More'            => 0,

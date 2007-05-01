@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:                Test-Warn
-version:             0.09
+version:             0.10
 abstract:            Perl extension to test methods for warnings
 license:             perl
 generated_by:        ExtUtils::MakeMaker version 6.31
@@ -8,7 +8,7 @@ distribution_type:   module
 requires:     
     Array::Compare:                0
     File::Spec:                    0
-    Sub::Uplevel:                  0
+    Sub::Uplevel:                  0.12
     Test::Builder:                 0.13
     Test::Builder::Tester:         1.02
     Test::Exception:               0
