@@ -16,9 +16,8 @@ WriteMakefile(
                             'File::Spec'            => 0,
                             'Test::More'            => 0,
                             }, # e.g., Module::Name => 1.1
-    ($] >= 5.005 ?    ## Add these new keywords supported since 5.005
-      (ABSTRACT_FROM => 'Warn.pm', # retrieve abstract from module
-       AUTHOR        => 'Alexandr Ciornii <alexchorny'.'@gmail.com>') : ()),
-    ($ExtUtils::MakeMaker::VERSION ge '6.30_00'? 
+    ABSTRACT_FROM => 'Warn.pm', # retrieve abstract from module
+    AUTHOR        => 'Alexandr Ciornii <alexchorny'.'@gmail.com>',
+    ($ExtUtils::MakeMaker::VERSION ge '6.31'? 
      ('LICENSE'		=> 'perl', ) : ()),
 );

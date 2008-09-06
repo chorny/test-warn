@@ -1,4 +1,11 @@
 Revision history for Perl extension Test::Warn.
+
+0.11  Jun 09 2008
+        - better Makefile.PL
+        - mention Test::Trap
+        - uplevel 2 changed to uplevel 1 to work with Sub::Uplevel 0.19_02
+        - small fixes
+
 0.10  May 01 2007
         - depend on newer version of Sub::Uplevel
         - fixed pod error
