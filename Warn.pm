@@ -471,7 +471,7 @@ our $tree = Tree::MyDAG_Node->nice_lol_to_tree(
 );
 
 sub _warning_category_regexp {
-    my $sub_tree = $tree->depthsearch(shift()) or return undef;
+    my $sub_tree = $tree->depthsearch(shift()) or return;
     my $re = join "|", map {$_->name} $sub_tree->leaves_under;
     return qr/(?=\w)$re/;
 }
@@ -479,7 +479,7 @@ sub _warning_category_regexp {
 sub warning_like_category {
     my ($warning, $category) = @_;
     my $re = _warning_category_regexp($category) or 
-        carp("Unknown warning category '$category'"),return undef;
+        carp("Unknown warning category '$category'"),return;
     my $ok = $warning =~ /$re/;
     return $ok;
 }

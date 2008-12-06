@@ -6,7 +6,7 @@ use ExtUtils::MakeMaker;
 WriteMakefile(
     'NAME'		=> 'Test::Warn',
     'VERSION_FROM'	=> 'Warn.pm', # finds $VERSION
-    'PREREQ_PM'		=> {    
+    'PREREQ_PM'		=> {
                             'Array::Compare'        => 0,
                             'Test::Exception'       => 0,
                             'Test::Builder'         => 0.13,
@@ -20,4 +20,6 @@ WriteMakefile(
     AUTHOR        => 'Alexandr Ciornii <alexchorny'.'@gmail.com>',
     ($ExtUtils::MakeMaker::VERSION ge '6.31'? 
      ('LICENSE'		=> 'perl', ) : ()),
+    ($ExtUtils::MakeMaker::VERSION ge '6.48'? 
+     ('MIN_PERL_VERSION' => 5.006,) : ()),
 );
