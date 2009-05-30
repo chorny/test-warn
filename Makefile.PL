@@ -7,7 +7,7 @@ WriteMakefile(
     'NAME'		=> 'Test::Warn',
     'VERSION_FROM'	=> 'Warn.pm', # finds $VERSION
     'PREREQ_PM'		=> {
-                            'Array::Compare'        => 0,
+                            #'Array::Compare'        => 0,
                             'Test::Exception'       => 0,
                             'Test::Builder'         => 0.13,
                             'Test::Builder::Tester' => 1.02,

@@ -225,7 +225,7 @@ use 5.006;
 use strict;
 use warnings;
 
-use Array::Compare;
+#use Array::Compare;
 use Sub::Uplevel 0.12;
 
 our $VERSION = '0.11';
