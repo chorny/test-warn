@@ -42,7 +42,7 @@ Tests that BLOCK gives exactly the one specificated warning.
 The test fails if the BLOCK warns more then one times or doesn't warn.
 If the string is undef, 
 then the tests succeeds iff the BLOCK doesn't give any warning.
-Another way to say that there aren't ary warnings in the block,
+Another way to say that there aren't any warnings in the block,
 is C<warnings_are {foo()} [], "no warnings in">.
 
 If you want to test for a warning given by carp,
