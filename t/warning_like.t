@@ -23,7 +23,7 @@ use constant TESTS =>(
 use constant SUBTESTS_PER_TESTS  => 12;
 
 use Test::Builder::Tester tests  => TESTS() * SUBTESTS_PER_TESTS;
-use Test::Exception;
+#use Test::Exception;
 use Test::Warn;
 
 Test::Builder::Tester::color 'on';

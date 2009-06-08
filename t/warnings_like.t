@@ -8,7 +8,7 @@ BEGIN {
 use strict;
 use warnings;
 
-use Test::Exception;
+#use Test::Exception;
 use Carp;
 
 use constant TESTS =>(
