@@ -315,7 +315,7 @@ sub _cmp_got_to_exp_warning {
     my ($got_kind, $got_msg) = %{ shift() };
     my ($exp_kind, $exp_msg) = %{ shift() };
     return 0 if ($got_kind eq 'warn') && ($exp_kind eq 'carped');
-    my $cmp = $got_msg =~ /^\Q$exp_msg\E at \S+ line \d+\.?$/;
+    my $cmp = $got_msg =~ /^\Q$exp_msg\E at .+ line \d+\.?$/;
     return $cmp;
 }
 
