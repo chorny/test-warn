@@ -41,7 +41,7 @@ now would be the time to go take a look.
 Tests that BLOCK gives exactly the one specificated warning.
 The test fails if the BLOCK warns more then one times or doesn't warn.
 If the string is undef, 
-then the tests succeeds iff the BLOCK doesn't give any warning.
+then the tests succeeds if the BLOCK doesn't give any warning.
 Another way to say that there aren't any warnings in the block,
 is C<warnings_are {foo()} [], "no warnings in">.
 
@@ -60,7 +60,7 @@ try better something like C<warning_like {warn "foo"} qr/at XYZ.dat line 5/>.
 warning_is and warning_are are only aliases to the same method.
 So you also could write
 C<warning_is {foo()} [], "no warning"> or something similar.
-I decided me to give two methods to have some better readable method names.
+I decided to give two methods to have some better readable method names.
 
 A true value is returned if the test succeeds, false otherwise.
 
@@ -73,7 +73,7 @@ Tests to see that BLOCK gives exactly the specificated warnings.
 The test fails if the BLOCK warns a different number than the size of the ARRAYREf
 would have expected.
 If the ARRAYREF is equal to [], 
-then the test succeeds iff the BLOCK doesn't give any warning.
+then the test succeeds if the BLOCK doesn't give any warning.
 
 Please read also the notes to warning_is as these methods are only aliases.
 
@@ -122,7 +122,7 @@ like it is expressed in perllexwarn.
 Note, that they have the hierarchical structure from perl 5.8.0,
 wich has a little bit changed to 5.6.1 or earlier versions
 (You can access the internal used tree with C<$Test::Warn::Categorization::tree>, 
-allthough I wouldn't recommend it)
+although I wouldn't recommend it)
 
 Thanks to the grouping in a tree,
 it's simple possible to test for an 'io' warning,
