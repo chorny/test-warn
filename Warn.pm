@@ -25,6 +25,8 @@ Test::Warn - Perl extension to test methods for warnings
                [qw/void uninitialized/], 
                "some warnings at compile time";
 
+  warning_exists {...} [qr/expected warning/], "Expected warning is thrown";
+
 =head1 DESCRIPTION
 
 This module provides a few convenience methods for testing warning based code.
@@ -288,6 +290,32 @@ sub warnings_like (&$;$) {
     return $ok;
 }
 
+sub warning_exists (&$;$) {
+    my $block       = shift;
+    my @exp_warning = map {_canonical_exp_warning($_)}
+                          _to_array_if_necessary( shift() || [] );
+    my $testname    = shift;
+    my @got_warning = ();
+    local $SIG{__WARN__} = sub {
+        my ($called_from) = caller(0);  # to find out Carping methods
+        my $wrn_text=shift;
+        my $wrn_rec=_canonical_got_warning($called_from, $wrn_text);
+        foreach my $wrn (@exp_warning) {
+          if (_cmp_got_to_exp_warning_like($wrn_rec,$wrn)) {
+            push @got_warning, $wrn_rec;
+            return;
+          }
+        }
+        warn $wrn_text;
+    };
+    uplevel 1,$block;
+    my $ok = _cmp_like( \@got_warning, \@exp_warning );
+    $Tester->ok( $ok, $testname );
+    $ok or _diag_found_warning(@got_warning),
+           _diag_exp_warning(@exp_warning);
+    return $ok;
+}
+
 
 sub _to_array_if_necessary {
     return (ref($_[0]) eq 'ARRAY') ? @{$_[0]} : ($_[0]);
@@ -323,7 +351,7 @@ sub _cmp_got_to_exp_warning_like {
     my ($got_kind, $got_msg) = %{ shift() };
     my ($exp_kind, $exp_msg) = %{ shift() };
     return 0 if ($got_kind eq 'warn') && ($exp_kind eq 'carped');
-    if (my $re = $Tester->maybe_regex($exp_msg)) {
+    if (my $re = $Tester->maybe_regex($exp_msg)) { #qr// or '//'
         my $cmp = $got_msg =~ /$re/;
         return $cmp;
     } else {
