@@ -21,7 +21,7 @@ WriteMakefile(
     ($ExtUtils::MakeMaker::VERSION ge '6.48'? 
      (MIN_PERL_VERSION => 5.006,
       META_MERGE => {
-        resources=> {
+        resources => {
           repository => 'http://github.com/chorny/test-warn/tree',
         },
         keywords => ['testing','warnings'],
