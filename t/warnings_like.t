@@ -11,6 +11,7 @@ use warnings;
 #use Test::Exception;
 use Carp;
 
+#expected, warning text, expected, test name
 use constant TESTS =>(
     [    "ok", ["my warning"], ["my"], "standard warning to find"],
     ["not ok", ["my warning"], ["another"], "another warning instead of my warning"],
