@@ -245,6 +245,7 @@ our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 our @EXPORT = qw(
     warning_is   warnings_are
     warning_like warnings_like
+    warning_exists
 );
 
 use Test::Builder;
