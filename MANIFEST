@@ -8,6 +8,8 @@ t/warning_is.t
 t/warning_like.t
 t/warnings_are.t
 t/warnings_like.t
+t/warning_exists.t
+t/warning_exists1.pl
 t/carped.t
 t/pod.t
 META.yml                                 Module meta-data (added by MakeMaker)
