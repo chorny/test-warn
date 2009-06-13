@@ -1,6 +1,6 @@
 Revision history for Perl extension Test::Warn.
 
-0.11_01
+0.11_01  Jun 14 2009
         - small changes
         - MIN_PERL_VERSION in Makefile.PL
         - Array::Compare is not needed
