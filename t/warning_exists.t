@@ -7,7 +7,7 @@ use Carp;
 use Test::More qw(no_plan);
 
 my $file="t/warning_exists1.pl";
-my $output=`$^X $file 2>&1`;
+my $output=`$^X -Mblib $file 2>&1`;
 $output=~s/^#.*$//gm;
 $output=~s/\n{2,}/\n/gs;
 #print $output;
