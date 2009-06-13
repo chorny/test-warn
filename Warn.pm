@@ -29,6 +29,8 @@ Test::Warn - Perl extension to test methods for warnings
 
 =head1 DESCRIPTION
 
+Perl programming way is using big number of tests.
+
 This module provides a few convenience methods for testing warning based code.
 
 If you are not already familiar with the Test::More manpage 
@@ -166,7 +168,7 @@ and for warning categories, too:
 
 =item warning_exists BLOCK STRING|ARRAYREF, TEST_NAME
 
-Similar to warning_like but will warn all warning that are not required by second parameter
+Similar to warning_like but will warn all warnings that are not required by second parameter
 
 =back
 
@@ -181,7 +183,7 @@ C<warnings_like> by default.
 =head1 BUGS
 
 Please note that warnings with newlines inside are making a lot of trouble.
-The only sensful way to handle them is to use are the C<warning_like> or
+The only sensible way to handle them is to use are the C<warning_like> or
 C<warnings_like> methods. Background for these problems is that there is no
 really secure way to distinguish between warnings with newlines and a tracing
 stacktrace.
@@ -219,6 +221,7 @@ Janek Schleicher, E<lt>bigj AT kamelfreund.deE<gt>
 =head1 COPYRIGHT AND LICENSE
 
 Copyright 2002 by Janek Schleicher
+Copyright 2007-2009 by Alexandr Ciornii
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself. 
