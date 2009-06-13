@@ -1,10 +1,12 @@
 Revision history for Perl extension Test::Warn.
 
+0.11_01
         - small changes
         - MIN_PERL_VERSION in Makefile.PL
         - Array::Compare is not needed
         - allow files with spaces in path
         - Test::Exception is also not needed
+        - warning_exists added
 
 0.11  Jul 09 2008
         - better Makefile.PL

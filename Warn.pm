@@ -164,6 +164,10 @@ and for warning categories, too:
                 ],
                 "I hope, you'll never have to write a test for so many warnings :-)";
 
+=item warning_exists BLOCK STRING|ARRAYREF, TEST_NAME
+
+Similar to warning_like but will warn all warning that are not required by second parameter
+
 =back
 
 =head2 EXPORT
@@ -171,6 +175,7 @@ and for warning categories, too:
 C<warning_is>,
 C<warnings_are>,
 C<warning_like>,
+C<warning_exists>,
 C<warnings_like> by default.
 
 =head1 BUGS
@@ -230,7 +235,7 @@ use warnings;
 #use Array::Compare;
 use Sub::Uplevel 0.12;
 
-our $VERSION = '0.11';
+our $VERSION = '0.11_01';
 
 require Exporter;
 
