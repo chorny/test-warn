@@ -1,5 +1,7 @@
 Revision history for Perl extension Test::Warn.
 
+        - carped.t will work on VMS
+
 0.11_01  Jun 14 2009
         - small changes
         - MIN_PERL_VERSION in Makefile.PL
