@@ -10,18 +10,26 @@ my $file="t/warning_exists1.pl";
 my $output=`$^X -Mblib $file 2>&1`;
 $output=~s/^#.*$//gm;
 $output=~s/\n{2,}/\n/gs;
+my @lines=split /[\n\r]+/,$output;
 #print $output;
-is($output,<<"EOT");
-warn_2 at $file line 12.
-ok 1
-ok 2
-warn_2 at $file line 21.
-not ok 3
-warn_2 at $file line 27.
-ok 4
-warn_2 at $file line 31.
-not ok 5
-Use of uninitialized value in addition (+) at $file line 36.
-ok 6
-1..6
-EOT
+my @expected=(
+"warn_2 at $file line 12.",
+'ok 1',
+'ok 2',
+"warn_2 at $file line 21.",
+'not ok 3',
+"warn_2 at $file line 27.",
+'ok 4',
+"warn_2 at $file line 31.",
+'not ok 5',
+qr/^Use of uninitialized value (?:\$a\s+)?in addition \(\+\) at \Q$file\E line 36\.$/,
+'ok 6',
+'1..6'
+);
+foreach my $i (0..$#expected) {
+  if ($expected[$i]=~/^\(\?\w*-\w*:/) {
+    like($lines[$i],$expected[$i]);
+  } else {
+    is($lines[$i],$expected[$i]);
+  }
+}
