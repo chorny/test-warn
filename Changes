@@ -1,12 +1,13 @@
 Revision history for Perl extension Test::Warn.
 
-        - carped.t will work on VMS
+        - carped.t will work on VMS (RT#39579)
+        - fix warning_exists.t for perl 5.10
 
 0.11_01  Jun 14 2009
         - small changes
         - MIN_PERL_VERSION in Makefile.PL
         - Array::Compare is not needed
-        - allow files with spaces in path
+        - allow files with spaces in path (RT#21545 by frew )
         - Test::Exception is also not needed
         - warning_exists added
 
