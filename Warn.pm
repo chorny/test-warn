@@ -177,8 +177,8 @@ Similar to warning_like but will warn all warnings that are not required by seco
 C<warning_is>,
 C<warnings_are>,
 C<warning_like>,
-C<warning_exists>,
-C<warnings_like> by default.
+C<warnings_like>,
+C<warning_exists> by default.
 
 =head1 BUGS
 
@@ -238,7 +238,7 @@ use warnings;
 #use Array::Compare;
 use Sub::Uplevel 0.12;
 
-our $VERSION = '0.11_01';
+our $VERSION = '0.11_02';
 
 require Exporter;
 
