@@ -168,7 +168,11 @@ and for warning categories, too:
 
 =item warning_exists BLOCK STRING|ARRAYREF, TEST_NAME
 
-Similar to warning_like but will warn all warnings that are not required by second parameter
+Same as warning_like but will warn all warnings that are not required by second parameter
+
+  warning_exists {...} [qr/expected warning/], "Expected warning is thrown";
+
+  warning_exists {...} ['uninitialized'], "Expected warning is thrown";
 
 =back
 

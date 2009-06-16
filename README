@@ -15,8 +15,6 @@ DEPENDENCIES
 This module requires these other modules and libraries:
 
 Test::Builder
-Test::Exception
-Array::Compare
 Sub::Uplevel
 List::Util
 Tree::DAG_Node
