@@ -221,6 +221,7 @@ Janek Schleicher, E<lt>bigj AT kamelfreund.deE<gt>
 =head1 COPYRIGHT AND LICENSE
 
 Copyright 2002 by Janek Schleicher
+
 Copyright 2007-2009 by Alexandr Ciornii
 
 This library is free software; you can redistribute it and/or modify
