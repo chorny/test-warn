@@ -25,7 +25,7 @@ Test::Warn - Perl extension to test methods for warnings
                [qw/void uninitialized/], 
                "some warnings at compile time";
 
-  warning_exists {...} [qr/expected warning/], "Expected warning is thrown";
+  warnings_exists {...} [qr/expected warning/], "Expected warning is thrown";
 
 =head1 DESCRIPTION
 
@@ -166,13 +166,13 @@ and for warning categories, too:
                 ],
                 "I hope, you'll never have to write a test for so many warnings :-)";
 
-=item warning_exists BLOCK STRING|ARRAYREF, TEST_NAME
+=item warnings_exists BLOCK STRING|ARRAYREF, TEST_NAME
 
 Same as warning_like but will warn all warnings that are not required by second parameter
 
-  warning_exists {...} [qr/expected warning/], "Expected warning is thrown";
+  warnings_exists {...} [qr/expected warning/], "Expected warning is thrown";
 
-  warning_exists {...} ['uninitialized'], "Expected warning is thrown";
+  warnings_exists {...} ['uninitialized'], "Expected warning is thrown";
 
 =back
 
@@ -182,7 +182,7 @@ C<warning_is>,
 C<warnings_are>,
 C<warning_like>,
 C<warnings_like>,
-C<warning_exists> by default.
+C<warnings_exists> by default.
 
 =head1 BUGS
 
@@ -226,7 +226,7 @@ Janek Schleicher, E<lt>bigj AT kamelfreund.deE<gt>
 
 Copyright 2002 by Janek Schleicher
 
-Copyright 2007-2009 by Alexandr Ciornii
+Copyright 2007-2009 by Alexandr Ciornii, L<http://chorny.net/>
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself. 
@@ -258,7 +258,7 @@ our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 our @EXPORT = qw(
     warning_is   warnings_are
     warning_like warnings_like
-    warning_exists
+    warnings_exists
 );
 
 use Test::Builder;
@@ -304,7 +304,7 @@ sub warnings_like (&$;$) {
     return $ok;
 }
 
-sub warning_exists (&$;$) {
+sub warnings_exists (&$;$) {
     my $block       = shift;
     my @exp_warning = map {_canonical_exp_warning($_)}
                           _to_array_if_necessary( shift() || [] );
