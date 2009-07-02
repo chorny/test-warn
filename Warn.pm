@@ -264,7 +264,11 @@ our @EXPORT = qw(
 use Test::Builder;
 my $Tester = Test::Builder->new;
 
+{
+no warnings 'once';
 *warning_is = *warnings_are;
+*warning_like = *warnings_like;
+}
 
 sub warnings_are (&$;$) {
     my $block       = shift;
@@ -284,7 +288,6 @@ sub warnings_are (&$;$) {
     return $ok;
 }
 
-*warning_like = *warnings_like;
 
 sub warnings_like (&$;$) {
     my $block       = shift;
