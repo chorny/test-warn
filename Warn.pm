@@ -29,7 +29,7 @@ Test::Warn - Perl extension to test methods for warnings
 
 =head1 DESCRIPTION
 
-Perl programming way is using big number of tests.
+A good style of Perl programming calls for a lot of diverse regression tests.
 
 This module provides a few convenience methods for testing warning based code.
 
@@ -168,7 +168,10 @@ and for warning categories, too:
 
 =item warnings_exists BLOCK STRING|ARRAYREF, TEST_NAME
 
-Same as warning_like but will warn all warnings that are not required by second parameter
+Same as warning_like, but will warn() all warnings that do not match the supplied regex/category,
+instead of registering an error. Use this test when you just want to make sure that specific
+warnings were generated, and couldn't care less if other warnings happened in the same block
+of code.
 
   warnings_exists {...} [qr/expected warning/], "Expected warning is thrown";
 
