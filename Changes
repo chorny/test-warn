@@ -1,6 +1,7 @@
 Revision history for Perl extension Test::Warn.
 
         - fix warning_exists.t for perl 5.6.2
+        - warnings_exists was renamed to warnings_exist
 
 0.11_02  Jun 16 2009
         - carped.t will work on VMS (RT#39579)
