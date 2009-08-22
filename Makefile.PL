@@ -36,8 +36,10 @@ sub WriteMakefile1 {
         $eumm_version=eval $eumm_version;
         die "EXTRA_META is deprecated" if exists $params{EXTRA_META};
         die "License not specified" if not exists $params{LICENSE};
-        if ($params{BUILD_REQUIRES}) { #$eumm_version < 6.5503 and 
-            #should be modified in future
+        if ($params{BUILD_REQUIRES}) { #and $eumm_version < 6.5503
+            #Should be modified in future when EUMM will
+            #correctly support BUILD_REQUIRES.
+            #EUMM 6.5502 has problems with BUILD_REQUIRES
             $params{PREREQ_PM}={ %{$params{PREREQ_PM} || {}} , %{$params{BUILD_REQUIRES}} };
             delete $params{BUILD_REQUIRES};
         }
