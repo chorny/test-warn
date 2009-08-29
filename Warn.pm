@@ -422,7 +422,7 @@ sub _diag_exp_warning {
     $Tester->diag( "didn't expect to find a warning" ) unless @_;
 }
 
-package Tree::MyDAG_Node;
+package Test::Warn::DAG_Node_Tree;
 
 use strict;
 use warnings;
@@ -468,7 +468,7 @@ package Test::Warn::Categorization;
 
 use Carp;
 
-our $tree = Tree::MyDAG_Node->nice_lol_to_tree(
+our $tree = Test::Warn::DAG_Node_Tree->nice_lol_to_tree(
    all => [ 'closure',
             'deprecated',
             'exiting',

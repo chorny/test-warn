@@ -1,6 +1,9 @@
 Revision history for Perl extension Test::Warn.
 
-0.20  Aug 2009
+0.21  Aug 29 2009
+        - rename internal package Tree::MyDAG_Node with Test::Warn::DAG_Node_Tree
+
+0.20  Aug 29 2009
         - fix warning_exists.t for perl 5.6.2
         - warnings_exists was renamed to warnings_exist
         - compatibility layer in Makefile.PL
