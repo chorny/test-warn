@@ -407,7 +407,7 @@ sub _diag_found_warning {
             $Tester->diag( "found warning: $_" );
         }
     }
-    $Tester->diag( "didn't found a warning" ) unless @_;
+    $Tester->diag( "didn't find a warning" ) unless @_;
 }
 
 sub _diag_exp_warning {
