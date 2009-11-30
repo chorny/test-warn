@@ -9,8 +9,8 @@ Test::Warn - Perl extension to test methods for warnings
   warning_is    {foo(-dri => "/")} "Unknown Parameter 'dri'", "dri != dir gives warning";
   warnings_are  {bar(1,1)} ["Width very small", "Height very small"];
 
-  warning_is    {add(2,2)} undef, "No warning to calc 2+2"; # or
-  warnings_are  {add(2,2)} [],    "No warning to calc 2+2"; # what reads better :-)
+  warning_is    {add(2,2)} undef, "No warnings for calc 2+2"; # or
+  warnings_are  {add(2,2)} [],    "No warnings for calc 2+2"; # what reads better :-)
 
   warning_like  {foo(-dri => "/")} qr/unknown param/i, "an unknown parameter test";
   warnings_like {bar(1,1)} [qr/width.*small/i, qr/height.*small/i];
