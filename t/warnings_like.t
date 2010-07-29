@@ -84,12 +84,12 @@ sub test_warnings_like {
 
 sub _found_warn_msg {
     @_ ? map({"found warning: $_ at ". __FILE__ . " line " . WARN_LINE . "." } @_)
-       : "didn't found a warning";
+       : "didn't find a warning";
 }
 
 sub _found_carp_msg {
     @_ ? map({"found carped warning: $_ at ". __FILE__ . " line " . CARP_LINE} @_)
-       : "didn't found a warning";
+       : "didn't find a warning";
 }
 
 

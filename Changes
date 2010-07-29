@@ -1,5 +1,7 @@
 Revision history for Perl extension Test::Warn.
 
+        - fixes in English
+
 0.21  Aug 29 2009
         - rename internal package Tree::MyDAG_Node with Test::Warn::DAG_Node_Tree
 

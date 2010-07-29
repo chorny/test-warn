@@ -80,7 +80,7 @@ sub _found_warn_msg {
                          __FILE__,
                          "line",
                          WARN_LINE . ".") )
-        : "didn't found a warning";
+        : "didn't find a warning";
 }
 
 sub _exp_warn_msg {
@@ -97,7 +97,7 @@ sub _found_carp_msg {
                          __FILE__,
                          "line",
                          CARP_LINE) )     # Note the difference, that carp msg
-        : "didn't found a warning";       # aren't finished by '.'
+        : "didn't find a warning";       # aren't finished by '.'
 }
 
 sub _exp_carp_msg {
