@@ -12,7 +12,7 @@ WriteMakefile1(
                             'Test::Builder'         => 0.13,
                             'Test::Builder::Tester' => 1.02,
                             'Sub::Uplevel'          => 0.12,
-                            'Tree::DAG_Node'        => 0,
+                            'Tree::DAG_Node'        => 1.02,
                             },
     'BUILD_REQUIRES'    => {
                             'File::Spec'            => 0,
