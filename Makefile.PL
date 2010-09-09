@@ -29,6 +29,12 @@ WriteMakefile1(
       keywords => ['testing','warnings'],
     },
     PL_FILES => {},
+    $^O =~/win/i ? (
+        dist => {
+            TAR      => 'ptar',
+            TARFLAGS => '-c -C -f',
+        },
+    ) : (),
 );
 
 sub WriteMakefile1 {
