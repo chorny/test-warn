@@ -42,7 +42,7 @@ now would be the time to go take a look.
 
 =item warning_is BLOCK STRING, TEST_NAME
 
-Tests that BLOCK gives exactly the one specificated warning.
+Tests that BLOCK gives exactly the one specified warning.
 The test fails if the BLOCK warns more then one times or doesn't warn.
 If the string is undef, 
 then the tests succeeds if the BLOCK doesn't give any warning.
@@ -73,7 +73,7 @@ The test name is optional, but recommended.
 
 =item warnings_are BLOCK ARRAYREF, TEST_NAME
 
-Tests to see that BLOCK gives exactly the specificated warnings.
+Tests to see that BLOCK gives exactly the specified warnings.
 The test fails if the BLOCK warns a different number than the size of the ARRAYREf
 would have expected.
 If the ARRAYREF is equal to [], 
@@ -148,7 +148,7 @@ created with warnings::register.
 
 =item warnings_like BLOCK ARRAYREF, TEST_NAME
 
-Tests to see that BLOCK gives exactly the number of the specificated warnings
+Tests to see that BLOCK gives exactly the number of the specified warnings
 and all the warnings have to match in the defined order to the 
 passed regexes.
 
