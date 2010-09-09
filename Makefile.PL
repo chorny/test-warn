@@ -28,6 +28,7 @@ WriteMakefile1(
       },
       keywords => ['testing','warnings'],
     },
+    PL_FILES => {},
 );
 
 sub WriteMakefile1 {
