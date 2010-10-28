@@ -1,9 +1,9 @@
 Build.bat
 Build
 _build
-Test-Warn-*
 blib
 *.tmp
 Makefile
 pm_to_blib
 MYMETA.yml
+Test-Warn-*

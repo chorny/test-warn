@@ -1,9 +1,12 @@
-Test/Warn version 0.21
+Test/Warn version 0.22
 ======================
 
 INSTALLATION
 
 To install this module type the following:
+   cpan Test::Warn
+
+or
 
    perl Makefile.PL
    make
