@@ -27,8 +27,7 @@ warnings_like {foo()} [map {qr/$_/} (1 .. 4)];
 test_test "Warnings and Carpings mixed, asked only for like warnings";
 
 test_out "not ok 1";
-test_fail +10;
-test_diag 
+my @test_diag = (
 "found warning: Warning 1 at $tcarped line 13.",
 "found carped warning: Carping 2 at $tcarped line 14",
 "found carped warning: Carping 3 at $tcarped line 15",
@@ -36,7 +35,11 @@ test_diag
 "expected to find carped warning: (?-xism:1)",
 "expected to find carped warning: (?-xism:2)",
 "expected to find carped warning: (?-xism:3)",
-"expected to find carped warning: (?-xism:4)";
+"expected to find carped warning: (?-xism:4)",
+);
+if (qr/x/ =~ /\(\?\^/){ s/-xism/^/ for @test_diag }
+test_fail +2;
+test_diag @test_diag;
 warnings_like {foo()} [{carped => [map {qr/$_/} (1 .. 4)]}];
 test_test "Warnings and Carpings mixed, asked only for like carpings";
 

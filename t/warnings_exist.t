@@ -28,7 +28,7 @@ qr/^Use of uninitialized value (?:\$a\s+)?in addition \(\+\) at \Q$file\E line 3
 '1..6'
 );
 foreach my $i (0..$#expected) {
-  if ($expected[$i]=~/^\(\?\w*-\w*:/) {
+  if ($expected[$i]=~/^\(\?\^?\w*-?\w*:/) {
     like($lines[$i],$expected[$i]);
   } else {
     is($lines[$i],$expected[$i]);
