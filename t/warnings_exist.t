@@ -12,6 +12,8 @@ $output=~s/^#.*$//gm;
 $output=~s/\n{2,}/\n/gs;
 my @lines=split /[\n\r]+/,$output;
 shift @lines if $lines[0]=~/^Using /; #extra line in perl 5.6.2
+shift @lines if $lines[0]=~/^TAP version /; #extra line in new TAP
+
 #print $output;
 my @expected=(
 "warn_2 at $file line 12.",
