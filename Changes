@@ -1,6 +1,6 @@
 Revision history for Perl extension Test::Warn.
 
-0.23
+0.23  2011-02-24
         - compatibility with Perl 5.14 (ANDK)
 
 0.22  Sep 10 2010
