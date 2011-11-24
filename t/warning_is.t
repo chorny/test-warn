@@ -23,7 +23,7 @@ use constant TESTS =>(
     ["not ok", "warning 1|warning 2", "warning1", "more than one warning"]
 );
 
-use Test::Builder::Tester tests  => TESTS() * SUBTESTS_PER_TESTS;
+use Test::Builder::Tester tests  => 3 + TESTS() * SUBTESTS_PER_TESTS;
 use Test::Warn;
 #use Test::Exception;
 
@@ -48,6 +48,10 @@ sub _create_exp_warning {
 }
 
 test_warning_is(@$_) foreach  TESTS();
+
+warning_is { warn "foo\n"; } "foo", 'with cr at end';
+warning_is { warn "foo\n"; } qr/foo/, 'with regex';
+warning_is { warn "foo"; } "foo at $0 line " . __LINE__, 'with explicit line mention';
 
 sub test_warning_is {
     my ($ok, $msg, $exp_warning, $testname) = @_;

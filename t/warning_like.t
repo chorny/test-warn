@@ -23,7 +23,7 @@ use constant TESTS =>(
 );
 use constant SUBTESTS_PER_TESTS  => 12;
 
-use Test::Builder::Tester tests  => TESTS() * SUBTESTS_PER_TESTS;
+use Test::Builder::Tester tests  => 1 + TESTS() * SUBTESTS_PER_TESTS;
 #use Test::Exception;
 use Test::Warn;
 
@@ -47,6 +47,7 @@ sub _create_exp_warning {
     return {carped => [$warning]} if $carplevel == 2;
 }
 
+warning_like { warn "\nfoo" } qr/foo/, "leading carriage return";
 test_warning_like(@$_) foreach TESTS();
 
 sub test_warning_like {

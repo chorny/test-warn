@@ -343,7 +343,7 @@ sub _to_array_if_necessary {
 sub _canonical_got_warning {
     my ($called_from, $msg) = @_;
     my $warn_kind = $called_from eq 'Carp' ? 'carped' : 'warn';
-    my @warning_stack = split /\n/, $msg;     # some stuff of uplevel is included
+    my @warning_stack = $warn_kind eq 'carped' ? split /\n/, $msg : ( $msg );     # some stuff of uplevel is included
     return {$warn_kind => $warning_stack[0]}; # return only the real message
 }
 
@@ -361,9 +361,24 @@ sub _canonical_exp_warning {
 sub _cmp_got_to_exp_warning {
     my ($got_kind, $got_msg) = %{ shift() };
     my ($exp_kind, $exp_msg) = %{ shift() };
+
     return 0 if ($got_kind eq 'warn') && ($exp_kind eq 'carped');
-    my $cmp = $got_msg =~ /^\Q$exp_msg\E at .+ line \d+\.?$/;
-    return $cmp;
+
+    return scalar $got_msg =~ _massage_exp( $exp_msg );
+}
+
+# heuristics for the warning message
+sub _massage_exp {
+    my $exp = shift;
+
+    # exp_msg is a regexp? leave it alone
+    return $exp if ref $exp eq 'Regexp';
+
+    # already have 'at line blah'? Fine
+    return qr/\Q$exp\E/ if $exp =~ /at .+ line \d+/;
+
+    # add the line info, maybe
+    return qr/^\Q$exp\E(?: at .+ line \d+\.?)?$/;
 }
 
 sub _cmp_got_to_exp_warning_like {
