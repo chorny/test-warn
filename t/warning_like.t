@@ -96,7 +96,8 @@ sub _found_carp_msg {
                          "at",
                          __FILE__,
                          "line",
-                         CARP_LINE) )     # Note the difference, that carp msg
+                         CARP_LINE.($Carp::VERSION gt "1.24"?".":"")
+	    ) )     # Note the difference, that carp msg
         : "didn't find a warning";       # aren't finished by '.'
 }
 

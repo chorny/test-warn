@@ -85,7 +85,9 @@ sub _found_warn_msg {
 }
 
 sub _found_carp_msg {
-    @_ ? map({"found carped warning: $_ at ". __FILE__ . " line " . CARP_LINE} @_)
+    @_ ? map({"found carped warning: $_ at ". __FILE__ . " line " . CARP_LINE
+		.($Carp::VERSION gt "1.24"?".":"")
+	     } @_)
        : "didn't find a warning";
 }
 
