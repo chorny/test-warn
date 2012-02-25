@@ -15,7 +15,7 @@ Test::Warn - Perl extension to test methods for warnings
   warning_like  {foo(-dri => "/")} qr/unknown param/i, "an unknown parameter test";
   warnings_like {bar(1,1)} [qr/width.*small/i, qr/height.*small/i];
 
-  warning_is    {foo()} {carped => "didn't found the right parameters"};
+  warning_is    {foo()} {carped => "didn't find the right parameters"};
   warnings_like {foo()} [qr/undefined/,qr/undefined/,{carped => qr/no result/i}];
 
   warning_like {foo(undef)}                 'uninitialized';
@@ -42,29 +42,28 @@ now would be the time to go take a look.
 
 =item warning_is BLOCK STRING, TEST_NAME
 
-Tests that BLOCK gives exactly the one specified warning.
-The test fails if the BLOCK warns more then one times or doesn't warn.
+Tests that BLOCK gives the specified warning exactly once.
+The test fails if the BLOCK warns more than once or does not warn at all.
 If the string is undef, 
 then the tests succeeds if the BLOCK doesn't give any warning.
-Another way to say that there aren't any warnings in the block,
-is C<warnings_are {foo()} [], "no warnings in">.
+Another way to say that there are no warnings in the block
+is C<warnings_are {foo()} [], "no warnings">.
 
-If you want to test for a warning given by carp,
-You have to write something like:
+If you want to test for a warning given by Carp,
+you have to write something like:
 C<warning_is {carp "msg"} {carped =E<gt> 'msg'}, "Test for a carped warning">.
-The test will fail,
-if a "normal" warning is found instead of a "carped" one.
+The test will fail if a "normal" warning is found instead of a "carped" one.
 
 Note: C<warn "foo"> would print something like C<foo at -e line 1>. 
-This method ignores everything after the at. That means, to match this warning
+This method ignores everything after the "at". Thus to match this warning
 you would have to call C<warning_is {warn "foo"} "foo", "Foo succeeded">.
 If you need to test for a warning at an exactly line,
-try better something like C<warning_like {warn "foo"} qr/at XYZ.dat line 5/>.
+try something like C<warning_like {warn "foo"} qr/at XYZ.dat line 5/>.
 
 warning_is and warning_are are only aliases to the same method.
 So you also could write
 C<warning_is {foo()} [], "no warning"> or something similar.
-I decided to give two methods to have some better readable method names.
+I decided to give two methods the same name to improve readability.
 
 A true value is returned if the test succeeds, false otherwise.
 
@@ -74,27 +73,27 @@ The test name is optional, but recommended.
 =item warnings_are BLOCK ARRAYREF, TEST_NAME
 
 Tests to see that BLOCK gives exactly the specified warnings.
-The test fails if the BLOCK warns a different number than the size of the ARRAYREf
-would have expected.
-If the ARRAYREF is equal to [], 
+The test fails if the warnings from BLOCK are not exactly the ones in ARRAYREF.
+If the ARRAYREF is equal to [],
 then the test succeeds if the BLOCK doesn't give any warning.
 
 Please read also the notes to warning_is as these methods are only aliases.
 
-If you want more than one tests for carped warnings look that way:
+If you want more than one test for carped warnings, try this:
 C<warnings_are {carp "c1"; carp "c2"} {carped => ['c1','c2'];> or
 C<warnings_are {foo()} ["Warning 1", {carped => ["Carp 1", "Carp 2"]}, "Warning 2"]>.
-Note that C<{carped => ...}> has always to be a hash ref.
+Note that C<{carped => ...}> must always be a hash ref.
 
 =item warning_like BLOCK REGEXP, TEST_NAME
 
-Tests that BLOCK gives exactly one warning and it can be matched to the given regexp.
+Tests that BLOCK gives exactly one warning and it can be matched by
+the given regexp.
 If the string is undef, 
-then the tests succeeds iff the BLOCK doesn't give any warning.
+then the tests succeeds if the BLOCK doesn't give any warning.
 
-The REGEXP is matched after the whole warn line,
-which consists in general of "WARNING at __FILE__ line __LINE__".
-So you can check for a warning in at File Foo.pm line 5 with
+The REGEXP is matched against the whole warning line,
+which in general has the form "WARNING at __FILE__ line __LINE__".
+So you can check for a warning in the file Foo.pm on line 5 with
 C<warning_like {bar()} qr/at Foo.pm line 5/, "Testname">.
 I don't know whether it's sensful to do such a test :-(
 However, you should be prepared as a matching with 'at', 'file', '\d'
@@ -208,13 +207,13 @@ tell me if you find a bug.
 Improve this documentation.
 
 The code has some parts doubled - especially in the test scripts.
-This is really awkward and has to be changed.
+This is really awkward and must be changed.
 
-Please feel free to suggest me any improvements.
+Please feel free to suggest improvements.
 
 =head1 SEE ALSO
 
-Have a look to the similar L<Test::Exception> module. Test::Trap
+Have a look to the similar modules: L<Test::Exception>, L<Test::Trap>.
 
 =head1 THANKS
 
