@@ -20,7 +20,7 @@ sub foo {
 #my $tcarped = File::Spec->catfile('t','carped.t');
 #$tcarped =~ s/\\/\//g if $^O eq 'MSWin32';
 #also will not work on VMS
-my $tcarped = 't/carped.t';
+my $tcarped = $0; #'t/carped.t';
 
 test_out "ok 1";
 warnings_like {foo()} [map {qr/$_/} (1 .. 4)];
