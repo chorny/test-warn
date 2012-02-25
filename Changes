@@ -1,8 +1,9 @@
 Revision history for Perl extension Test::Warn.
 
-0.24  2012-02-??
+0.23_01  2012-02-25
         - compatibility with Carp 1.25 (RURBAN)
         - require Carp 1.22
+        - carped.t would better work on Windows
 
 0.23  2011-02-24
         - compatibility with Perl 5.14 (ANDK)

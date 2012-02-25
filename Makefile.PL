@@ -6,6 +6,7 @@ use ExtUtils::MakeMaker;
 WriteMakefile1(
     'NAME'		=> 'Test::Warn',
     'VERSION_FROM'	=> 'Warn.pm', # finds $VERSION
+    'ABSTRACT_FROM'     => 'Warn.pm', # retrieve abstract from module
     'PREREQ_PM'		=> {
                             #'Array::Compare'        => 0,
                             #'Test::Exception'       => 0,
@@ -21,7 +22,6 @@ WriteMakefile1(
                            },
     'LICENSE'		=> 'perl',
     'MIN_PERL_VERSION'  => 5.006,
-    ABSTRACT_FROM => 'Warn.pm', # retrieve abstract from module
     AUTHOR        => 'Alexandr Ciornii <alexchorny'.'@gmail.com>',
     META_MERGE => {
       resources => {

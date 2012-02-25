@@ -245,7 +245,7 @@ use warnings;
 #use Array::Compare;
 use Sub::Uplevel 0.12;
 
-our $VERSION = '0.23';
+our $VERSION = '0.23_01';
 
 require Exporter;
 

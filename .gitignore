@@ -7,3 +7,4 @@ Makefile
 pm_to_blib
 MYMETA.*
 Test-Warn-*
+META.json
