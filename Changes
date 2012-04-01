@@ -1,5 +1,6 @@
 Revision history for Perl extension Test::Warn.
 
+0.24=0.23_01   2012-04-01
 0.23_01  2012-02-25
         - compatibility with Carp 1.25 (RURBAN)
         - require Carp 1.22
