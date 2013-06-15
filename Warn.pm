@@ -95,7 +95,7 @@ The REGEXP is matched against the whole warning line,
 which in general has the form "WARNING at __FILE__ line __LINE__".
 So you can check for a warning in the file Foo.pm on line 5 with
 C<warning_like {bar()} qr/at Foo.pm line 5/, "Testname">.
-I don't know whether it's sensful to do such a test :-(
+I don't know whether it makes sense to do such a test :-(
 However, you should be prepared as a matching with 'at', 'file', '\d'
 or similar will always pass. 
 Think to the qr/^foo/ if you want to test for warning "foo something" in file foo.pl.
@@ -131,8 +131,8 @@ Thanks to the grouping in a tree,
 it's simple possible to test for an 'io' warning,
 instead for testing for a 'closed|exec|layer|newline|pipe|unopened' warning.
 
-Note, that warnings occuring at compile time,
-can only be catched in an eval block. So
+Note, that warnings occurring at compile time,
+can only be caught in an eval block. So
 
   warning_like {eval q/"$x"; $x;/} 
                [qw/void uninitialized/], 
