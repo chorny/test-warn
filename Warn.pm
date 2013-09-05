@@ -122,10 +122,6 @@ The test name is optional, but recommended.
 Tests whether a BLOCK gives exactly one warning of the passed category.
 The categories are grouped in a tree,
 like it is expressed in perllexwarn.
-Note, that they have the hierarchical structure from perl 5.8.0,
-wich has a little bit changed to 5.6.1 or earlier versions
-(You can access the internal used tree with C<$Test::Warn::Categorization::tree>, 
-although I wouldn't recommend it)
 
 Thanks to the grouping in a tree,
 it's simple possible to test for an 'io' warning,
@@ -421,105 +417,17 @@ sub _diag_exp_warning {
     $Tester->diag( "didn't expect to find a warning" ) unless @_;
 }
 
-package Test::Warn::DAG_Node_Tree;
-
-use strict;
-use warnings;
-use base 'Tree::DAG_Node';
-
-
-sub nice_lol_to_tree {
-    my $class = shift;
-    $class->new(
-    {
-        name      => shift(),
-        daughters => [_nice_lol_to_daughters(shift())]
-    });
-}
-
-sub _nice_lol_to_daughters {
-    my @names = @{ shift() };
-    my @daughters = ();
-    my $last_daughter = undef;
-    foreach (@names) {
-        if (ref($_) ne 'ARRAY') {
-            $last_daughter = Tree::DAG_Node->new({name => $_});
-            push @daughters, $last_daughter;
-        } else {
-            $last_daughter->add_daughters(_nice_lol_to_daughters($_));
-        }
-    }
-    return @daughters;
-}
-
-sub depthsearch {
-    my ($self, $search_name) = @_;
-    my $found_node = undef;
-    $self->walk_down({callback => sub {
-        my $node = shift();
-        $node->name eq $search_name and $found_node = $node,!"go on";
-        "go on with searching";
-    }});
-    return $found_node;
-}
-
 package Test::Warn::Categorization;
 
 use Carp;
 
-our $tree = Test::Warn::DAG_Node_Tree->nice_lol_to_tree(
-   all => [ 'closure',
-            'deprecated',
-            'exiting',
-            'glob',
-            'io'           => [ 'closed',
-                                'exec',
-                                'layer',
-                                'newline',
-                                'pipe',
-                                'unopened'
-                              ],
-            'misc',
-            'numeric',
-            'once',
-            'overflow',
-            'pack',
-            'portable',
-            'recursion',
-            'redefine',
-            'regexp',
-            'severe'       => [ 'debugging',
-                                'inplace',
-                                'internal',
-                                'malloc'
-                              ],
-            'signal',
-            'substr',
-            'syntax'       => [ 'ambiguous',
-                                'bareword',
-                                'digit',
-                                'parenthesis',
-                                'precedence',
-                                'printf',
-                                'prototype',
-                                'qw',
-                                'reserved',
-                                'semicolon'
-                              ],
-            'taint',
-            'threads',
-            'uninitialized',
-            'unpack',
-            'untie',
-            'utf8',
-            'void',
-            'y2k'
-           ]
-);
-
+my $bits = \%warnings::Bits;
 sub _warning_category_regexp {
-    my $sub_tree = $tree->depthsearch(shift()) or return;
-    my $re = join "|", map {$_->name} $sub_tree->leaves_under;
+    my $category_bits = $bits->{shift()} or return;
+    my @categories = grep { ($bits->{$_} & $category_bits) eq $category_bits }
+      keys %$bits;
+
+    my $re = join "|", @categories;
     return qr/(?=\w)$re/;
 }
 
