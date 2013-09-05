@@ -423,8 +423,9 @@ use Carp;
 
 my $bits = \%warnings::Bits;
 sub _warning_category_regexp {
-    my $category_bits = $bits->{shift()} or return;
-    my @categories = grep { ($bits->{$_} & $category_bits) eq $category_bits }
+    my $category = shift;
+    my $category_bits = $bits->{$category} or return;
+    my @categories = grep { ($bits->{$_} & $category_bits) eq $bits->{$_} }
       keys %$bits;
 
     my $re = join "|", @categories;
