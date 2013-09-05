@@ -422,14 +422,19 @@ package Test::Warn::Categorization;
 use Carp;
 
 my $bits = \%warnings::Bits;
+my @warnings = sort grep {
+  my $warn_bits = $bits->{$_};
+  !grep { $_ ne $warn_bits && ($_ & $warn_bits) eq $_ } values %$bits;
+} keys %$bits;
+
 sub _warning_category_regexp {
     my $category = shift;
     my $category_bits = $bits->{$category} or return;
-    my @categories = grep { ($bits->{$_} & $category_bits) eq $bits->{$_} }
-      keys %$bits;
+    my @category_warnings
+      = grep { ($bits->{$_} & $category_bits) eq $bits->{$_} } @warnings;
 
-    my $re = join "|", @categories;
-    return qr/(?=\w)$re/;
+    my $re = join "|", @category_warnings;
+    return qr/$re/;
 }
 
 sub warning_like_category {
