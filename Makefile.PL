@@ -25,7 +25,7 @@ WriteMakefile1(
     AUTHOR        => 'Alexandr Ciornii <alexchorny'.'@gmail.com>',
     META_MERGE => {
       resources => {
-        repository => 'http://github.com/chorny/test-warn/tree',
+        repository => 'https://github.com/chorny/test-warn',
       },
       keywords => ['testing','warnings'],
     },
