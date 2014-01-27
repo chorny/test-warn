@@ -424,8 +424,12 @@ use Carp;
 my $bits = \%warnings::Bits;
 my @warnings = sort grep {
   my $warn_bits = $bits->{$_};
-  !grep { $_ ne $warn_bits && ($_ & $warn_bits) eq $_ } values %$bits;
+  #!grep { $_ ne $warn_bits && ($_ & $warn_bits) eq $_ } values %$bits;
 } keys %$bits;
+
+my %warnings_in_category = (
+  'utf8' => ['Wide character in \w+\b',],
+);
 
 sub _warning_category_regexp {
     my $category = shift;
@@ -433,7 +437,10 @@ sub _warning_category_regexp {
     my @category_warnings
       = grep { ($bits->{$_} & $category_bits) eq $bits->{$_} } @warnings;
 
-    my $re = join "|", @category_warnings;
+    my @list = 
+      map { exists $warnings_in_category{$_}? (@{ $warnings_in_category{$_}}) : ($_) }
+      @category_warnings;
+    my $re = join "|", @list;
     return qr/$re/;
 }
 
