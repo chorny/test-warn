@@ -25,8 +25,8 @@ use constant TESTS =>(
     [    "ok", ["warning 1","warning 2"], ["warning 1", "warning 2"], "more than one warning (standard ok)"],
     [    "ok", ["warning 1","warning 1"], ["warning 1", "warning 1"], "more than one warning (two similar warnings)"],
     ["not ok", ["warning 1","warning 2"], ["warning 2", "warning 1"], "more than one warning (different order)"],
-    [    "ok", [('01' .. '99')], [('01' .. '99')], "many warnings ok"],
-    ["not ok", [('01' .. '99')], [('01' .. '99'), '100'], "many, but diff. warnings"]
+    [    "ok", [ 1 .. 20 ], [ 1 .. 20 ], "many warnings ok"],
+    ["not ok", [ 1 .. 20 ], [ 1 .. 21 ], "many, but diff. warnings"]
 );
 
 use Test::Builder::Tester tests  => TESTS() * SUBTESTS_PER_TESTS;
