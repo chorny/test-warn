@@ -1,4 +1,4 @@
-Test/Warn version 0.24
+Test/Warn version 0.30
 ======================
 
 INSTALLATION
@@ -19,8 +19,6 @@ This module requires these other modules and libraries:
 
 Test::Builder
 Sub::Uplevel
-List::Util
-Tree::DAG_Node
 File::Spec
 
 SYNOPSIS
@@ -71,7 +69,7 @@ AUTHOR
 
 COPYRIGHT AND LICENSE
     Copyright 2002 by Janek Schleicher
-    Copyright 2007-2009 by Alexandr Ciornii
+    Copyright 2007-2014 by Alexandr Ciornii
 
     This library is free software; you can redistribute it and/or modify it
     under the same terms as Perl itself.

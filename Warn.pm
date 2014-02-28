@@ -233,7 +233,7 @@ Janek Schleicher, E<lt>bigj AT kamelfreund.deE<gt>
 
 Copyright 2002 by Janek Schleicher
 
-Copyright 2007-2011 by Alexandr Ciornii, L<http://chorny.net/>
+Copyright 2007-2014 by Alexandr Ciornii, L<http://chorny.net/>
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself. 
