@@ -122,6 +122,8 @@ The test name is optional, but recommended.
 Tests whether a BLOCK gives exactly one warning of the passed category.
 The categories are grouped in a tree,
 like it is expressed in perllexwarn.
+Also see L</BUGS AND LIMITATIONS>.
+
 
 Thanks to the grouping in a tree,
 it's simple possible to test for an 'io' warning,
@@ -182,7 +184,14 @@ C<warning_like>,
 C<warnings_like>,
 C<warnings_exist> by default.
 
-=head1 BUGS
+=head1 BUGS AND LIMITATIONS
+
+Category check is done as qr/category_name/. In some case this works, like for
+category 'uninitialized'. For 'utf8' it does not work. Perl does not have a list
+of warnings, so it is not possible to generate one for Test::Warn.
+If you want to add a warning to a category, send a pull request. Modifications
+should be done to %warnings_in_category. You should look into perl source to check
+how warning is looking exactly.
 
 Please note that warnings with newlines inside are making a lot of trouble.
 The only sensible way to handle them is to use are the C<warning_like> or
@@ -241,7 +250,7 @@ use warnings;
 #use Array::Compare;
 use Sub::Uplevel 0.12;
 
-our $VERSION = '0.24';
+our $VERSION = '0.24_01';
 
 require Exporter;
 

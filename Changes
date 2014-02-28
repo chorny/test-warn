@@ -1,5 +1,10 @@
 Revision history for Perl extension Test::Warn.
 
+        - important note in documentation how check for warning category is done
+          If you use Test::Warn with categories, you should check that it does
+          what you expect.
+        - Category tree is now dynamic and does not use Tree::DAG_Node (Graham Knop)
+
 0.24=0.23_01   2012-04-01
 0.23_01  2012-02-25
         - compatibility with Carp 1.25 (RURBAN)
