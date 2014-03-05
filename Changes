@@ -1,5 +1,6 @@
 Revision history for Perl extension Test::Warn.
 
+0.30  2014-03-05
         - important note in documentation how check for warning category is done
           If you use Test::Warn with categories, you should check that it does
           what you expect.
