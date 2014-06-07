@@ -51,7 +51,9 @@ is C<warnings_are {foo()} [], "no warnings">.
 
 If you want to test for a warning given by Carp,
 you have to write something like:
-C<warning_is {carp "msg"} {carped =E<gt> 'msg'}, "Test for a carped warning">.
+
+  warning_is {carp "msg"} {carped => 'msg'}, "Test for a carped warning";
+
 The test will fail if a "normal" warning is found instead of a "carped" one.
 
 Note: C<warn "foo"> would print something like C<foo at -e line 1>. 
@@ -80,9 +82,14 @@ then the test succeeds if the BLOCK doesn't give any warning.
 Please read also the notes to warning_is as these methods are only aliases.
 
 If you want more than one test for carped warnings, try this:
-C<warnings_are {carp "c1"; carp "c2"} {carped => ['c1','c2'];> or
-C<warnings_are {foo()} ["Warning 1", {carped => ["Carp 1", "Carp 2"]}, "Warning 2"]>.
-Note that C<{carped => ...}> must always be a hash ref.
+
+  warnings_are {carp "c1"; carp "c2"} {carped => ['c1','c2'];
+
+or
+
+  warnings_are {foo()} ["Warning 1", {carped => ["Carp 1", "Carp 2"]}, "Warning 2"];
+
+Note that C<{carped =E<gt> ...}> must always be a hash ref.
 
 =item warning_like BLOCK REGEXP, TEST_NAME
 
@@ -108,7 +115,8 @@ as strings without slashes are reserved for warning categories
 
 Similar to C<warning_is>,
 you can test for warnings via C<carp> with:
-C<warning_like {bar()} {carped => qr/bar called too early/i};>
+
+  warning_like {bar()} {carped => qr/bar called too early/i};
 
 Similar to C<warning_is>/C<warnings_are>,
 C<warning_like> and C<warnings_like> are only aliases to the same methods.
